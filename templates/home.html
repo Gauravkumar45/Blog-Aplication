@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{%block title%} Welcome to BlogApp {%endblock%}
+
+{%block contant%}
+
+<div class="container">
+    <div class="row">
+        <div class="col-3 mt-2">
+            <h3 class="fst-italic"><center>All Blogs</center></h3>
+            {%for p in posts  %}
+                <div class="slide-container swiper">
+                    <div class="slide-content">
+                        <div class="card-wrapper swiper-wrapper">
+                            <div class="card swiper-slide">
+                                <div class="image-content">
+                                    <span class="overlay"></span>
+                                    <div class="card-image">
+                                        <img src="/media/{{p.image}}" alt="" class="card-img">
+                                    </div>
+                                </div>
+                                <div class="card-content">
+                                    <h2 class="name">{{p.title}}</h2>
+                                    <a href="/blog/{{p.url}}" class="btn bg-primary">View More</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {%endfor%}
+        </div>
+
+        <div class="col-9">
+            <h1 class="fst-italic"><center>All Categories</center></h1>
+            {%for c in cats%}
+            <h2 class="text-uppercase"><marquee><strong>{{c.title}}</strong></marquee></h2>
+            <div class="img-container">
+                <img src="/media/{{c.image}}" class="img-fluid">
+            </div> 
+            <p>{{c.description |truncatewords:80| safe}}</p>
+            <a href="/category/{{c.url}}" class="btn bg-primary">Read more...</a><br>
+            {%endfor%}
+        </div>
+    </div>
+</div>
+
+{%endblock%}

@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{%block title%} Post {%endblock%}
+
+{%block contant%}
+
+<div class="container">
+    <div class="row">
+        <div class="col-9">
+            <h3>{{post.title}}</h3>
+            <p>{{post.cat.title}}</p>
+            <img src="/media/{{post.image}}" class="img-fluid">
+            <br/>
+            <p>{{post.content | safe}}</p>
+        </div>
+        <div class="col-3 mt-2">
+            <h2 class="fst-italic"><center>All Categories</center></h2>
+            {%for c in cats%}
+                <div class="slide-container swiper">
+                    <div class="slide-content">
+                        <div class="card-wrapper swiper-wrapper">
+                            <div class="card swiper-slide">
+                                <div class="image-content">
+                                    <span class="overlay"></span>
+                                    <div class="card-image">
+                                        <img src="/media/{{c.image}}" alt="" class="card-img">
+                                    </div>
+                                </div>
+                                <div class="card-content">
+                                    <h2 class="name">{{c.title}}</h2>
+                                    <a href="/category/{{c.url}}" class="btn bg-primary">View More</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {%endfor%}
+        </div>
+    </div>
+</div>
+
+{%endblock%}

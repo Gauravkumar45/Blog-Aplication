@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{%block title %} Category {%endblock%}
+
+{%block contant%}
+
+<div class="container">
+    <h2 class="name mt-2">{{cat.title}}</h2>
+    <div class="img-container">
+        <img src="/media/{{cat.image}}",class="img-fluid", style="width:100%;max-height:450px;object-fit:cover;">
+    </div>
+    <br>
+    <p class="description">{{cat.description}}</p>
+
+    <h2 class="fst-italic"> -> List all posts in this category</h2>
+    {% for p in post %}
+    <div class="container text-center">
+        <div class="row">
+          <div class="col-3">
+            <img src="/media/{{p.image}}" class="img-fuild" style="width:100px; heigth:100px; margin:15px;">
+          </div>
+          <div class="col-9">
+            <a href="/blog/{{p.url}}" class="text-decoration-none">Click the {{p.title}}</a>
+          </div>
+        </div>
+        {% empty %}
+        <h3>No posts in this category</h3>
+    </div>  
+    {%endfor%}
+</div>
+
+
+{%endblock%}
